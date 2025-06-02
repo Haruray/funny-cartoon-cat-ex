@@ -34,16 +34,16 @@ export default function HomePage() {
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-start p-6 text-[var(--color-text)]">
-      <div className="w-full max-w-2xl flex flex-col items-center mt-8">
-        <h1 className="mb-4 text-3xl font-bold text-center">
+      <div className="mt-8 flex w-full max-w-2xl flex-col items-center">
+        <h1 className="mb-4 text-center text-3xl font-bold">
           ✨ Miaw Image Search ✨
         </h1>
         <form
           onSubmit={handleSearch}
-          className="w-full flex flex-col items-center"
+          className="flex w-full flex-col items-center"
         >
           <textarea
-            className="w-full rounded border border-pink-300 px-4 py-2 mb-4 text-white placeholder-pink-300 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-[var(--color-bg-secondary)] min-h-[80px] resize-none"
+            className="mb-4 min-h-[80px] w-full resize-none rounded border border-pink-300 bg-[var(--color-bg-secondary)] px-4 py-2 text-white placeholder-pink-300 focus:ring-2 focus:ring-pink-400 focus:outline-none"
             placeholder="Describe what you're looking for..."
             value={query}
             onChange={(e) => setQuery(e.target.value)}
@@ -63,17 +63,17 @@ export default function HomePage() {
           </p>
         )}
       </div>
-      <div className="w-full max-w-4xl grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-6 mt-10">
+      <div className="mt-10 grid w-full max-w-4xl grid-cols-2 gap-6 sm:grid-cols-3 md:grid-cols-4">
         {images.map((url, i) => (
           <div
             key={url + i}
-            className="cursor-pointer rounded-lg overflow-hidden shadow-lg bg-[var(--color-bg-secondary)] hover:scale-105 transition-transform duration-200"
+            className="cursor-pointer overflow-hidden rounded-lg bg-[var(--color-bg-secondary)] shadow-lg transition-transform duration-200 hover:scale-105"
             onClick={() => setModalUrl(url)}
           >
             <img
               src={url}
               alt="Result"
-              className="w-full h-40 object-cover object-center"
+              className="h-40 w-full object-cover object-center"
               loading="lazy"
             />
           </div>
@@ -85,13 +85,13 @@ export default function HomePage() {
           onClick={() => setModalUrl(null)}
         >
           <div
-            className="bg-[var(--color-bg-secondary)] p-4 rounded-lg shadow-lg max-w-2xl w-full flex flex-col items-center"
+            className="flex w-full max-w-2xl flex-col items-center rounded-lg bg-[var(--color-bg-secondary)] p-4 shadow-lg"
             onClick={(e) => e.stopPropagation()}
           >
             <img
               src={modalUrl}
               alt="Large preview"
-              className="max-h-[70vh] w-auto rounded mb-4"
+              className="mb-4 max-h-[70vh] w-auto rounded"
             />
             <button
               className="rounded bg-pink-600 px-4 py-2 font-bold text-white shadow-md hover:bg-pink-700"
