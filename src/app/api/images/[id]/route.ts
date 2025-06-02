@@ -3,9 +3,9 @@ import { db } from "~/server/db";
 
 export async function GET(
   request: NextRequest,
-  { params }: { params: { id: string } },
+  { params }: { params: Promise<{ id: string }> },
 ) {
-  const id = parseInt(params.id);
+  const id = parseInt((await params).id);
   if (isNaN(id)) {
     return NextResponse.json({ error: "Invalid ID" }, { status: 400 });
   }
