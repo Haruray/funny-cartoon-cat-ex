@@ -15,7 +15,7 @@ const searchQuerySchema = z.object({
   ),
 });
 
-export const generateQuery = async (input: string) => {
+const generateQuery = async (input: string) => {
   "use server";
   try {
     const result = await generateObject({
@@ -42,11 +42,12 @@ But, make sure to only search for relevant words only and exclude person names, 
 For example, if the input is "makan ramen di jepang, enak banget", you should only search for "makan" or "ramen".
 Another example, "brina sedang di jepang, mengunjungi kuil", you should only search for "mengunjungi" or "kuil".
 
+there are some cases of colloquial words, like "makan ramennnnnn", you should only search for "makan" or "ramen".
+
 Return only a valid JSON with the key 'queries' containing an array of Prisma query objects.`,
       prompt: `Generate search queries for: ${input}`,
       schema: searchQuerySchema,
     });
-    console.log("Generated queries:", result.object.queries);
     return result.object.queries || [];
   } catch (e) {
     console.error(e);
