@@ -5,6 +5,14 @@
 import "./src/env.js";
 
 /** @type {import("next").NextConfig} */
-const config = {};
+const config = {
+  experimental: {
+    serverComponentsExternalPackages: [
+      "@opentelemetry/auto-instrumentations-node",
+      "@opentelemetry/sdk-node",
+      "@opentelemetry/api"
+    ],
+  },
+};
 
 export default config;

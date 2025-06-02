@@ -1,7 +1,8 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Geist } from "next/font/google";
+
+import AuthGate from "./components/AuthGate";
 
 export const metadata: Metadata = {
   title: "Create T3 App",
@@ -9,17 +10,24 @@ export const metadata: Metadata = {
   icons: [{ rel: "icon", url: "/favicon.ico" }],
 };
 
-const geist = Geist({
-  subsets: ["latin"],
-  variable: "--font-geist-sans",
-});
-
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${geist.variable}`}>
-      <body>{children}</body>
+    <html lang="en">
+      <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+      </head>
+      <body
+        style={{
+          fontFamily: "'Shadows Into Light Two', cursive",
+          margin: 0,
+          padding: 0,
+          minHeight: "100vh",
+        }}
+      >
+        <AuthGate>{children}</AuthGate>
+      </body>
     </html>
   );
 }

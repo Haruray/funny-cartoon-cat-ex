@@ -1,6 +1,20 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Shadows+Into+Light+Two&display=swap");
 @import "tailwindcss";
 
-@theme {
-  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+:root {
+  --color-bg: #162447;
+  --color-bg-secondary: #1f4068;
+  --color-accent: #1b1b2f;
+  --color-text: #eaf6ff;
+  --color-text-contrast: #ffffff;
+  --font-handwriting: "Shadows Into Light Two", cursive;
+}
+
+body {
+  background: var(--color-bg) url("/stars.jpg") repeat;
+  color: var(--color-text);
+  font-family: var(--font-handwriting), ui-sans-serif, system-ui, sans-serif;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
 }
